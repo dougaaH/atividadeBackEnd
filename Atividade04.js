@@ -125,43 +125,114 @@
 // main();
 
 // 5.
-function getUsuario() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const usuario = {
-                id: 5,
-                nome: "João"
-            }
-            const erro = false
+// function getUsuario() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const usuario = [
+//                 { id: 1, nome: "João", email: "joaojoao@joao.com" }]
+//             const erro = false
 
-            if (erro) {
-                reject("Falha nas informações do usuário.")
-            } else {
-                resolve(usuario)
-            }
-        }, 1000);
-    })
-}
+//             if (erro) {
+//                 reject("Falha nas informações do usuário.")
+//             } else {
+//                 resolve(usuario)
+//             }
+//         }, 1000);
+//     })
+// }
 
-function getPedidos(idUsuario) {
-    return new Promise(() => {
-        setTimeout(() => {
-            const pedidos = [
-                
-            ];
+// function getPedidos(idUsuario) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const pedidos = [
+//                 { id: 1, usuarioID: idUsuario, item: "Caneta", valor: 2 },
+//                 { id: 2, usuarioID: idUsuario, item: "Caderno", valor: 15 },
+//                 { id: 3, usuarioID: idUsuario, item: "Lápis", valor: 1 }
+//             ];
 
-        }, 1500);
-    })
-}
+//             resolve(pedidos)
+//         }, 1500);
+//     })
+// }
 
-async function mostrarPedidos() {
-    try {
-        console.log("Verificando dados do usuário...")
-        const usuario = await getUsuario()
+// async function mostrarPedidos(idUsuario) {
+//     try {
+//         console.log("Verificando dados do usuário...")
+//         const usuario = await getUsuario();
+//         console.log("Usuário:", usuario);
 
+//         console.log("Buscando seus pedidos...")
+//         const pedidos = await getPedidos();
+//         console.log("Pedidos:");
 
-        console.log("")
-    } catch (error) {
-        
-    }
-}
+//         pedidos.forEach(p => {
+//             console.log(` - ${p.item} R$ ${p.valor}`)
+//         });
+//     } catch (error) {
+//         console.error("Erro ao buscas dados: ", erro)
+//     }
+// }
+
+// mostrarPedidos();
+
+// 6.
+// function delay(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+// async function contarAte(numero) {
+//   for (let i = 1; i <= numero; i++) {
+//     console.log(i);
+//     await delay(1000);
+//   }
+// }
+// contarAte(5);
+
+// 7.
+
+// function buscarComTimeout() {
+//   const busca = new Promise(resolve =>
+//     setTimeout(() => resolve("Dados encontrados"), 2000)
+//   );
+
+//   const timeout = new Promise((_, reject) =>
+//     setTimeout(() => reject("Tempo esgotado"), 1000)
+//   );
+
+//   return Promise.race([busca, timeout]);
+// }
+// buscarComTimeout()
+//   .then(console.log)
+//   .catch(console.error);
+
+// 8.
+// function promessaResolve1s() {
+//   return new Promise(resolve =>
+//     setTimeout(() => resolve("Resolvida em 1 segundo"), 1000)
+//   );
+// }
+
+// function promessaRejeita2s() {
+//   return new Promise((_, reject) =>
+//     setTimeout(() => reject("Rejeitada em 2 segundos"), 2000)
+//   );
+// }
+
+// function promessaResolve05s() {
+//   return new Promise(resolve =>
+//     setTimeout(() => resolve("Resolvida em 0.5 segundo"), 500)
+//   );
+// }
+
+// async function verificarResultados() {
+//   const resultados = await Promise.allSettled([
+//     promessaResolve1s(),
+//     promessaRejeita2s(),
+//     promessaResolve05s()
+//   ]);
+
+//   resultados.forEach((resultado, index) => {
+//     console.log(`Promise ${index + 1}:`, resultado.status, "-", resultado.reason || resultado.value);
+//   });
+// }
+// verificarResultados();
